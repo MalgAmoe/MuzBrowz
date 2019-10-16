@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { StyleSheet, css } from 'aphrodite';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={css(styles.app)}>
+      Welcome to MuzBrowz
     </div>
   );
 }
+
+const colors = {
+  primary: {
+    dark: '#0E3A5C',
+    medium: '#346388',
+    light: '#7FA4C0'
+  },
+  secondary: {
+    dark: '#780A3E',
+    medium: '#B03B72',
+    light: '#E290B7'
+  },
+  tertiary: {
+    dark: '#8F8B0D',
+    medium: '#D3CE47',
+    light: '#FFFCA3'
+  }
+};
+
+const styles = StyleSheet.create({
+  app: {
+    backgroundColor: colors.primary.dark,
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 'calc(10px + 2vmin)',
+    color: 'white'
+  }
+})
 
 export default App;
