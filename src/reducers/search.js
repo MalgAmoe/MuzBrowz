@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   songs: [],
+  selectedSong: 0,
   loadingSongs: false,
   error: null
 };

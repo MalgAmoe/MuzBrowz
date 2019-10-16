@@ -17,10 +17,9 @@ class Search extends Component {
   performSearch() {
     const { dispatch } = this.props;
     const { searchTerm } = this.state;
-    dispatch(searchSongs(searchTerm));
-    // this.setState({
-    //   searchTerm: ''
-    // })
+    if (searchTerm.length > 1) {
+      dispatch(searchSongs(searchTerm));
+    }
   }
 
   setInput(e) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import { connect } from 'react-redux';
 
 import Search from '../atoms/search';
 
@@ -8,6 +9,11 @@ class SearchPage extends Component {
     return (
       <div className={css(styles.container)}>
         <Search />
+        <ul>
+          {this.props.songs.map(song => {
+            return <li key={song.trackId}>{song.trackName}</li>
+          })}
+        </ul>
       </div>
     );
   }
@@ -22,4 +28,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SearchPage;
+const mapStateToProps = ({ search }) => ({
+  songs: search.songs
+})
+
+export default connect(mapStateToProps)(SearchPage);
