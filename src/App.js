@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ search }) => ({
-
+  songs: search.songs
 })
 
 export default connect(mapStateToProps)(App);

@@ -6,4 +6,4 @@ class PlayerPage extends Component {
     }
 }
 
-export default PlayerPage
+export default PlayerPage;
