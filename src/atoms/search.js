@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     left: 212,
     ':hover': {
       cursor: 'pointer'
-    }
+    },
+    color: colors.tertiary.light
   }
 });
 

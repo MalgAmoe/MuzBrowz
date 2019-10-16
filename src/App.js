@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 import { Router } from '@reach/router';
 
@@ -32,4 +33,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+const mapStateToProps = ({ search }) => ({
+
+})
+
+export default connect(mapStateToProps)(App);
