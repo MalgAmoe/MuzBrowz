@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import { connect } from 'react-redux';
 
 import Search from '../atoms/search';
-import SongListElement from '../molecules/songListElement';
+import SongList from '../organisms/songList';
 
 class SearchPage extends Component {
   render() {
     return (
       <div className={css(styles.container)}>
         <Search />
-        <div style={{width: '100%'}}>
-          {this.props.songs.map(song => {
-            return <SongListElement key={`${song.trackId}_${song.collectionId}`} songInfo={song} />
-          })}
-        </div>
+        <SongList />
       </div>
     );
   }
@@ -29,8 +24,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = ({ search }) => ({
-  songs: search.songs
-})
-
-export default connect(mapStateToProps)(SearchPage);
+export default SearchPage;
