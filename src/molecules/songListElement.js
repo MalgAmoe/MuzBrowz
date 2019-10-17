@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
       backgroundColor: colors.secondary.light,
       color: colors.secondary.dark,
       cursor: 'pointer'
+    },
+    '@media (max-width: 850px)': {
+      flexDirection: 'column'
     }
   },
   infos: {
@@ -48,14 +51,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    margin: '10px'
+    margin: '10px',
+    '@media (max-width: 800px)': {
+      flexDirection: 'column',
+      fontSize: 'calc(10px + 1vmin)'
+    }
   },
   textField: {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     width: '12vw',
-    textAlign: 'center'
+    textAlign: 'center',
+    '@media (max-width: 800px)': {
+      width: '100%'
+    }
   },
   numberField: {
     width: 100,
