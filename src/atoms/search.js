@@ -38,10 +38,10 @@ const styles = StyleSheet.create({
   searchInput: {
     height: 30,
     width: 200,
-    border: '1px solid white',
+    border: `1px solid ${colors.primary.light}`,
     borderRadius: 20,
     background: colors.primary.dark,
-    color: 'white',
+    color: colors.primary.light,
     paddingLeft: 10,
     paddingRight: 36,
     ':focus': {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     ':hover': {
       cursor: 'pointer'
     },
-    color: 'white'
+    color: colors.primary.light
   }
 });
 

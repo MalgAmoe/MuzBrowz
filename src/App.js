@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     fontSize: 'calc(10px + 2vmin)',
-    color: 'white',
+    color: colors.primary.light,
     padding: '20px'
   }
 });

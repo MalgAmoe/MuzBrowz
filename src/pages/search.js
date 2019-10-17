@@ -3,21 +3,18 @@ import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux';
 
 import Search from '../atoms/search';
-import Thumbnail from '../atoms/coverThumbnail';
+import SongListElement from '../molecules/songListElement';
 
 class SearchPage extends Component {
   render() {
     return (
       <div className={css(styles.container)}>
         <Search />
-        <ul>
+        <div style={{width: '100%'}}>
           {this.props.songs.map(song => {
-            return (<li key={`${song.trackId}_${song.collectionId}`}>
-              {song.trackName}
-              <Thumbnail thumbnailUrl={song.artworkUrl30} collectionName={song.collectionName} />
-            </li>)
+            return <SongListElement key={`${song.trackId}_${song.collectionId}`} songInfo={song} />
           })}
-        </ul>
+        </div>
       </div>
     );
   }
