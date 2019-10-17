@@ -12,7 +12,7 @@ function App() {
       <h3>MuzBrowz</h3>
       <Router>
         <SearchPage path='/' />
-        <PlayerPage path='player' />
+        <PlayerPage path='player/:songPosition' />
       </Router>
     </div>
   );

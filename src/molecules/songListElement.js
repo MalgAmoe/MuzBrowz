@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import { navigate } from "@reach/router"
 
 import CoverThumbnail from '../atoms/coverThumbnail';
 import { millisToSongLength } from '../utils/time';
 import colors from '../colors';
 
-const songListElement = ({ songInfo }) => {
-  return <div className={css(styles.container)}>
+const songListElement = ({ songInfo, position }) => {
+  return <div
+      className={css(styles.container)}
+      onClick={() => navigate(`/player/${position}`)}
+    >
     <CoverThumbnail 
       thumbnailUrl={songInfo.artworkUrl30}
       collectionName={songInfo.collectionName}

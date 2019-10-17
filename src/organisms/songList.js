@@ -10,8 +10,12 @@ class SongList extends Component {
     const { songs } = this.props;
     return <div className={css(styles.container)}>
       <OrderingSelector />
-      {songs.map(song => {
-        return <SongListElement key={`${song.trackId}_${song.collectionId}`} songInfo={song} />
+      {songs.map((song, i) => {
+        return <SongListElement
+          key={`${song.trackId}_${song.collectionId}`}
+          songInfo={song}
+          position={i}
+        />
       })}
     </div>
   }
