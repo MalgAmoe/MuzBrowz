@@ -26,3 +26,9 @@ export const SEARCH_INPUT = 'SEARCH_INPUT';
 export const searchInput = searchTerm => (dispatch) => {
   dispatch({ type: SEARCH_INPUT, searchTerm })
 }
+
+export const CHANGE_ORDERING = 'CHANGE_ORDERING';
+
+export const changeOrdering = ordering => (dispatch) => {
+  dispatch({ type: CHANGE_ORDERING, ordering })
+}

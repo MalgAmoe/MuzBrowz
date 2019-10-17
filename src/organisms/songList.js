@@ -3,11 +3,13 @@ import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux';
 
 import SongListElement from '../molecules/songListElement';
+import OrderingSelector from '../molecules/orderingSelector';
 
 class SongList extends Component {
   render() {
     const { songs } = this.props;
     return <div className={css(styles.container)}>
+      <OrderingSelector />
       {songs.map(song => {
         return <SongListElement key={`${song.trackId}_${song.collectionId}`} songInfo={song} />
       })}

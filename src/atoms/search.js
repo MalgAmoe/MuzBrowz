@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     margin: 'auto',
     ':hover': {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      color: colors.secondary.light
     },
     color: colors.primary.light
   }
