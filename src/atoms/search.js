@@ -4,28 +4,19 @@ import { FaSearch } from 'react-icons/fa';
 import { connect } from 'react-redux';
 
 import colors from '../colors';
-import { searchSongs } from '../actions/search';
+import { searchSongs, searchInput } from '../actions/search';
 
 class Search extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      searchTerm: ''
-    }
-  }
-
   performSearch() {
-    const { dispatch } = this.props;
-    const { searchTerm } = this.state;
+    const { dispatch, searchTerm } = this.props;
     if (searchTerm.length > 1) {
       dispatch(searchSongs(searchTerm));
     }
   }
 
   setInput(e) {
-    this.setState({
-      searchTerm: e.target.value
-    });
+    const { dispatch } = this.props;
+    dispatch(searchInput(e.target.value));
   }
 
   render() {
@@ -35,7 +26,7 @@ class Search extends Component {
             className={css(styles.searchInput)}
             onChange={(e) => this.setInput(e)}
             onKeyPress={(e) => {if(e.key === 'Enter') this.performSearch()}}
-            value={this.state.searchTerm}
+            value={this.props.searchTerm}
           />
           <FaSearch className={css(styles.searchIcon)} onClick={() => this.performSearch()}/>
         </div>
@@ -75,4 +66,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect()(Search);
+const mapStateToProps = ({ search }) => ({
+  searchTerm: search.searchTerm
+});
+
+export default connect(mapStateToProps)(Search);

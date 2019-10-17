@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default ({ thumbnailUrl }) => {
-  return <img src={thumbnailUrl} />
+export default ({ thumbnailUrl, collectionName }) => {
+  return <img src={thumbnailUrl} alt={collectionName} />
 }

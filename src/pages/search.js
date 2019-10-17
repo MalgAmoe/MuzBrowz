@@ -3,6 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux';
 
 import Search from '../atoms/search';
+import Thumbnail from '../atoms/coverThumbnail';
 
 class SearchPage extends Component {
   render() {
@@ -11,7 +12,10 @@ class SearchPage extends Component {
         <Search />
         <ul>
           {this.props.songs.map(song => {
-            return <li key={song.trackId}>{song.trackName}</li>
+            return (<li key={`${song.trackId}_${song.collectionId}`}>
+              {song.trackName}
+              <Thumbnail thumbnailUrl={song.artworkUrl30} collectionName={song.collectionName} />
+            </li>)
           })}
         </ul>
       </div>

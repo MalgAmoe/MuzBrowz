@@ -5,17 +5,24 @@ export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_ERROR = 'SEARCH_ERROR';
 
 const searchRequest = () => ({ type: SEARCH_REQUEST });
-const searchSuccess = results => ({ type: SEARCH_SUCCESS, results });
+const searchSuccess = songs => ({ type: SEARCH_SUCCESS, songs });
 const searchError = error => ({ type: SEARCH_ERROR, error });
 
 export const searchSongs = term => (dispatch) => {
   dispatch(searchRequest());
-  return axios.get(`https://itunes.apple.com/search?term=${term}`) //&media=music&entity=song')
+  return axios.get(`https://itunes.apple.com/search?term=${term}`)
     .then(({ data }) => {
       const { results } = data;
-      dispatch(searchSuccess(results));
+      const songs = results.filter(result => result.kind === 'song');
+      dispatch(searchSuccess(songs));
     })
     .catch(error => {
       dispatch(searchError(error.message));
     })
 };
+
+export const SEARCH_INPUT = 'SEARCH_INPUT';
+
+export const searchInput = searchTerm => (dispatch) => {
+  dispatch({ type: SEARCH_INPUT, searchTerm })
+}
