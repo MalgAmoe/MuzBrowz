@@ -34,6 +34,7 @@ class Search extends Component {
           <input 
             className={css(styles.searchInput)}
             onChange={(e) => this.setInput(e)}
+            onKeyPress={(e) => {if(e.key === 'Enter') this.performSearch()}}
             value={this.state.searchTerm}
           />
           <FaSearch className={css(styles.searchIcon)} onClick={() => this.performSearch()}/>
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     ':hover': {
       cursor: 'pointer'
     },
-    color: colors.tertiary.light
+    color: 'white'
   }
 });
 
