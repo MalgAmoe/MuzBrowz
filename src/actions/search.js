@@ -8,7 +8,7 @@ const searchRequest = () => ({ type: SEARCH_REQUEST });
 const searchSuccess = songs => ({ type: SEARCH_SUCCESS, songs });
 const searchError = error => ({ type: SEARCH_ERROR, error });
 
-export const searchSongs = term => (dispatch) => {
+export const searchSongs = term => dispatch => {
   dispatch(searchRequest());
   return axios.get(`https://itunes.apple.com/search?term=${term}`)
     .then(({ data }) => {
@@ -23,12 +23,18 @@ export const searchSongs = term => (dispatch) => {
 
 export const SEARCH_INPUT = 'SEARCH_INPUT';
 
-export const searchInput = searchTerm => (dispatch) => {
+export const searchInput = searchTerm => dispatch => {
   dispatch({ type: SEARCH_INPUT, searchTerm })
 }
 
 export const CHANGE_ORDERING = 'CHANGE_ORDERING';
 
-export const changeOrdering = ordering => (dispatch) => {
+export const changeOrdering = ordering => dispatch => {
   dispatch({ type: CHANGE_ORDERING, ordering })
+}
+
+export const CHANGE_SELECTED_SONG = 'CHANGE_SELECTED_SONG';
+
+export const changeSelectedSong = selectedSong => dispatch => {
+  dispatch({ type: CHANGE_SELECTED_SONG, selectedSong })
 }

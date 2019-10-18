@@ -1,32 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import { navigate } from "@reach/router"
+import { navigate } from "@reach/router";
+import { connect } from 'react-redux';
 
 import CoverThumbnail from '../atoms/coverThumbnail';
 import { millisToSongLength } from '../utils/time';
 import colors from '../colors';
+import { changeSelectedSong } from '../actions/search';
 
-const songListElement = ({ songInfo, position }) => {
-  return <div
-      className={css(styles.container)}
-      onClick={() => navigate(`/player/${position}`)}
-    >
-    <CoverThumbnail 
-      thumbnailUrl={songInfo.artworkUrl30}
-      collectionName={songInfo.collectionName}
-      className={css(styles.image)}
-    />
-    <div className={css(styles.infos)}>
-      <span className={css(styles.textField)}>{songInfo.artistName} </span>
-      <span className={css(styles.textField)}>{songInfo.trackName} </span>
-      <span className={css(styles.numberField)}>{millisToSongLength(songInfo.trackTimeMillis)} </span>
-      <span className={css(styles.textField)}>{songInfo.collectionName} </span>
-      <span className={css(styles.textField)}>{songInfo.primaryGenreName} </span>
-      <span className={css(styles.numberField)}>{songInfo.releaseDate.slice(0, 4)} </span>
-      <span className={css(styles.numberField)}>{songInfo.trackPrice}$ </span>
+class SongListElement extends Component {
+  handleClick(songPosition) {
+    const { dispatch } = this.props;
+    dispatch(changeSelectedSong(songPosition));
+    navigate(`/player/${songPosition}`)
+  }
+
+  render() {
+    const { songInfo, position } = this.props;
+    return <div
+        className={css(styles.container)}
+        onClick={() => this.handleClick(position)}
+      >
+      <CoverThumbnail 
+        thumbnailUrl={songInfo.artworkUrl30}
+        collectionName={songInfo.collectionName}
+        className={css(styles.image)}
+      />
+      <div className={css(styles.infos)}>
+        <span className={css(styles.textField)}>{songInfo.artistName} </span>
+        <span className={css(styles.textField)}>{songInfo.trackName} </span>
+        <span className={css(styles.numberField)}>{millisToSongLength(songInfo.trackTimeMillis)} </span>
+        <span className={css(styles.textField)}>{songInfo.collectionName} </span>
+        <span className={css(styles.textField)}>{songInfo.primaryGenreName} </span>
+        <span className={css(styles.numberField)}>{songInfo.releaseDate.slice(0, 4)} </span>
+        <span className={css(styles.numberField)}>{songInfo.trackPrice}$ </span>
+      </div>
     </div>
-  </div>
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -80,4 +91,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default songListElement
+export default connect()(SongListElement)

@@ -5,7 +5,8 @@ import {
   SEARCH_SUCCESS,
   SEARCH_ERROR,
   SEARCH_INPUT,
-  CHANGE_ORDERING
+  CHANGE_ORDERING,
+  CHANGE_SELECTED_SONG
 } from '../actions/search';
 
 const initialState = {
@@ -41,6 +42,8 @@ export default (state = initialState, action) => {
     case CHANGE_ORDERING:
       songs = orderSongs(action.ordering, state.songs);
       return { ...state, ordering: action.ordering, songs };
+    case CHANGE_SELECTED_SONG:
+      return { ...state, selectedSong: action.selectedSong }
     default:
       return state;
   }

@@ -3,8 +3,8 @@ import { StyleSheet, css } from 'aphrodite';
 import { Router } from '@reach/router';
 
 import colors from './colors';
-import SearchPage from './pages/search';
-import PlayerPage from './pages/player';
+import SearchPage from './pages/searchPage';
+import PlayerPage from './pages/playerPage';
 
 function App() {
   return (
