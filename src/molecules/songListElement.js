@@ -12,7 +12,7 @@ class SongListElement extends Component {
   handleClick(songPosition) {
     const { dispatch } = this.props;
     dispatch(changeSelectedSong(songPosition));
-    navigate(`/player/${songPosition}`)
+    navigate('/player/')
   }
 
   render() {
