@@ -43,4 +43,4 @@ export const CHANGE_PLAYING = 'CHANGE_PLAYING';
 
 export const changePlaying = (isPlaying) => dispatch => {
   dispatch({ type: CHANGE_PLAYING, isPlaying })
-}
+};

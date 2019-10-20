@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import { connect } from 'react-redux';
 import { navigate } from "@reach/router";
 
 import colors from '../colors';
 import Player from '../organisms/player';
+import Share from '../organisms/share';
 
 class PlayerPage extends Component {
   render() {
@@ -14,6 +14,7 @@ class PlayerPage extends Component {
           className={css(styles.back)}
         >Go back to search</div>
         <Player />
+        <Share />
       </div>
   }
 }
@@ -40,8 +41,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = ({ search }) => ({
-  songs: search.songs,
-});
-
-export default connect(mapStateToProps)(PlayerPage);
+export default PlayerPage;
