@@ -6,7 +6,8 @@ import {
   SEARCH_ERROR,
   SEARCH_INPUT,
   CHANGE_ORDERING,
-  CHANGE_SELECTED_SONG
+  CHANGE_SELECTED_SONG,
+  CHANGE_PLAYING
 } from '../actions/search';
 
 const initialState = {
@@ -15,7 +16,9 @@ const initialState = {
   songs: [],
   selectedSong: 0,
   loadingSongs: false,
-  error: null
+  error: null,
+  audio: new Audio(),
+  isPlaying: false
 };
 
 const orderSongs = (ordering, songs) => {
@@ -43,7 +46,10 @@ export default (state = initialState, action) => {
       songs = orderSongs(action.ordering, state.songs);
       return { ...state, ordering: action.ordering, songs };
     case CHANGE_SELECTED_SONG:
-      return { ...state, selectedSong: action.selectedSong }
+      return { ...state, selectedSong: action.selectedSong };
+    case CHANGE_PLAYING: {
+      return { ...state, isPlaying: action.isPlaying };
+    }
     default:
       return state;
   }

@@ -38,3 +38,9 @@ export const CHANGE_SELECTED_SONG = 'CHANGE_SELECTED_SONG';
 export const changeSelectedSong = selectedSong => dispatch => {
   dispatch({ type: CHANGE_SELECTED_SONG, selectedSong })
 }
+
+export const CHANGE_PLAYING = 'CHANGE_PLAYING';
+
+export const changePlaying = (isPlaying) => dispatch => {
+  dispatch({ type: CHANGE_PLAYING, isPlaying })
+}
